@@ -1,0 +1,15 @@
+{
+  "background_color": "#37393e",
+  "description": "Flowers that Bloom in the Moonlight.",
+  "display": "fullscreen",
+  "icons": [                       
+    {
+      "src": "/static/img/app-ico.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "VidAPI",
+  "short_name": "VidAPI",
+  "start_url": "/index.htm"
+}
