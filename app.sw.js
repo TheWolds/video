@@ -2,11 +2,11 @@ self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('fox-store').then(function(cache) {
      return cache.addAll([
-       '/app.sw.js',
-       '/index.htm',
-       '/app.index.js',
-       '/static/js/app.js',
-       '/static/css/style.css'
+       'app.sw.js',
+       'index.htm',
+       'app.index.js',
+       'static/js/app.js',
+       'static/css/style.css'
      ]);
    })
  );
