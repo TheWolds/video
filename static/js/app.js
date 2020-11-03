@@ -145,9 +145,6 @@ document.getElementById('player').load();
  document.getElementById('player').load();
 
  }
-if(urlParams.get('local')==='hls'){
-	lfjhls(uri);
-}
 
   const player = new Plyr('#player', {
 				  controls:['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
@@ -162,7 +159,7 @@ if(urlParams.get('local')==='hls'){
 });
   
   // Expose
-  
+if(urlParams.get('local')==='hls'){lfjhls(uri);}
   window.player = player;
   function on(selector, type, callback) {
     document.querySelector(selector).addEventListener(type, callback, false);
