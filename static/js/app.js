@@ -19,7 +19,26 @@ var vquality={default: urlParams.get('size')?parseInt(urlParams.get('size')):108
 var vdownload=false;
 var vidalowciw=false;
 if(urlParams.get('referrer')=='no'){document.getElementById('referrer').remove();}
-	
+//_____________________________________________________
+
+function lfjhls(cjsl){
+  var video = document.querySelector('#player');
+
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(cjsl);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+    });
+  }
+  
+	plyr.setup(video);
+	document.getElementById('player').setAttribute('autoplay',true);
+	document.getElementById('player').load();
+}
+//_____________________________________________________
+
 function gofile(){
 if(urlParams.get('local')=='gf'){
 fetch("https://apiv2.gofile.io/getServer?c="+suveid, {"headers":{"accept":"*/*"},"referrer":"https://gofile.io/d/"+suveid,"method":"GET"}).then(response => response.json()).then((data) => {
@@ -127,6 +146,10 @@ document.getElementById('player').load();
  document.getElementById('player').load();
 
  }
+if(urlParams.get('local')==='hls'){
+	lfjhls(uri);
+}
+
   const player = new Plyr('#player', {
 				  controls:['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
 				  settings:['captions', 'quality', 'speed', 'loop'],
