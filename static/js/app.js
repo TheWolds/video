@@ -33,7 +33,6 @@ function lfjhls(cjsl){
     });
   }
   
-	plyr.setup(video);
 	document.getElementById('player').setAttribute('autoplay',true);
 	document.getElementById('player').load();
 }
