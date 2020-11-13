@@ -28,7 +28,7 @@ var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'))
 	
 	
 	var asp= document.createElement('script');
-		asp.src='https://api.allorigins.win/get?url=https%3A%2F%2Fcdn.adf.ly%2Fjs%2Fdisplay.js';
+		asp.src='http://api.allorigins.win/get?url=https%3A//cdn.adf.ly/js/display.js';
 		document.body.append(asp);
 		var adfly_id = 23019109;
 		var adfly_advert = 'int';
