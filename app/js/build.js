@@ -26,18 +26,7 @@ var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'))
             '</video>'+
 			'</div>';
 	
-fetch('https://api.allorigins.win/get?url=${encodeURIComponent('https://cdn.adf.ly/js/display.js')}')
-.then(response => {
-	if (response.ok) return response.json()
-	throw new Error('Network response was not ok.')
-})
-.then(data =>{
-		var asp= document.createElement('script');
-		asp.innerHTML="var adfly_id = 23019109; var adfly_advert = 'int'; var adfly_protocol = 'https'; var adfly_domain = 'j.gs'; var popunder = true; var popunder_frequency_delay = 5;"+data.contents;
-
-
-});
-		
+	
 		
 		
 fetch('https://api.allorigins.win/get?url=https%3A%2F%2Fcdn.adf.ly%2Fjs%2Fdisplay.js').then(response => {if (response.ok) return response.json();throw new Error('Network response was not ok.')}).then(data =>{var asp= document.createElement('script');asp.innerHTML="var adfly_id = 23019109; var adfly_advert = 'int'; var adfly_protocol = 'https'; var adfly_domain = 'j.gs'; var popunder = true; var popunder_frequency_delay = 5;"+data.contents;document.body.append(asp);});
