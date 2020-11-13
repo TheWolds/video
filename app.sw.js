@@ -4,7 +4,6 @@ self.addEventListener('install', function(e) {
      return cache.addAll([
        '/video/app.sw.js',
        '/video/index.htm',
-       '/video/app.index.js',
        '/video/static/js/app.js',
        '/video/static/css/style.css'
      ]);
