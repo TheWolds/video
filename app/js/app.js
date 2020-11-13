@@ -150,7 +150,7 @@ function downloadvideo(){
 	if(vidalowciw == false && vdownload==true){
 	vidalowciw=true;
 	var uid3= document.createElement('button');
-		uid3.innerHTML='<span>Download video in '+urlParams.get('size')+'p</span>';
+		uid3.innerHTML='<span id="lfjdownloadspan">Download video in '+urlParams.get('size')+'p</span>';
 		uid3.setAttribute('data-plyr','settings');
 		uid3.setAttribute('type','button');
 		uid3.setAttribute('class','plyr__control');
@@ -161,6 +161,13 @@ function downloadvideo(){
 	
 	}
 
+}
+
+if(player.download.match(/premiumvideo([a-z0-9]+)\.xvideos\-cdn\.com/ig)){
+vdownload=true;downloadvideo();
+document.querySelector('#lfjdownloadspan').innerText='Download video';
+document.querySelector('#lfjdownloadspan').setAttribute('id','lfjdownloadspon')
+document.querySelector('#lfjdownloadspon').setAttribute('onclick',"lfjdownload(player.download,true,'#lfjdownloadspon')");
 }
 
 
