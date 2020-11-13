@@ -18,6 +18,8 @@ var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'))
 var vquality={default: urlParams.get('size')?parseInt(urlParams.get('size')):1080};
 var vdownload=false;
 var vidalowciw=false;
+var pickurl;
+
 if(urlParams.get('referrer')=='no'){document.getElementById('referrer').remove();}
 	
 function gofile(){
@@ -187,7 +189,6 @@ var segments; fetch(player.download)
            	
            	
            };
-          var pickurl;
           if (lfiv[2160]){pickurl = lfiv[2160];}
          	else if(lfiv[1440]){pickurl = lfiv[1440];}
          	else if(lfiv[1440]){pickurl = lfiv[1440];}
