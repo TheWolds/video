@@ -166,8 +166,10 @@ function downloadvideo(){
 if(player.download.match(/premiumvideo\-([a-z0-9]+)\.xvideos\-cdn\.com/ig)){
 vdownload=true;downloadvideo();
 document.querySelector('#lfjdownloadspan').innerText='Download video';
-document.querySelector('#lfjdownloadspan').setAttribute('id','lfjdownloadspon')
-document.querySelector('#lfjdownloadspon').setAttribute('onclick',"lfjdownload(player.download,true,'#lfjdownloadspon')");
+document.querySelector('#lfjdownloadspan').parentElement.removeAttribute('onclick');
+document.querySelector('#lfjdownloadspan').setAttribute('onclick',"document.querySelector('#lfjdownloadspan').setAttribute('id','lfjdownloadspon');lfjdownload(player.download,true,'#lfjdownloadspon')");
+
+
 }
 
 
