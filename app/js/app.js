@@ -167,7 +167,39 @@ if(player.download.match(/premiumvideo\-([a-z0-9]+)\.xvideos\-cdn\.com/ig)){
 vdownload=true;downloadvideo();
 document.querySelector('#lfjdownloadspan').innerText='Download video';
 document.querySelector('#lfjdownloadspan').parentElement.removeAttribute('onclick');
-document.querySelector('#lfjdownloadspan').setAttribute('onclick',"document.querySelector('#lfjdownloadspan').setAttribute('id','lfjdownloadspon');lfjdownload(player.download,true,'#lfjdownloadspon')");
+
+var newirl =player.download.replace(player.download.split('/').pop(),'');
+var locklink = false;
+var lfiv=[];
+var segments; fetch(player.download)
+    .then(response => {
+        response.text().then(text => {
+           var frt= text.replace(/(\#(.+)\n)/ig,''); frt=frt.replace(/\n+/ig,"\n");
+           
+           segments = frt.split("\n").filter(Boolean); 
+           
+           for (var i=0; i < segments.length; i++) {
+           	   if(segments[i].match(/720p/ig)){lfiv[720] = newirl+segments[i];}
+           	   if(segments[i].match(/640p/ig)){lfiv[640] = newirl+segments[i];}
+           	   if(segments[i].match(/1080p/ig)){lfiv[1080] = newirl+segments[i];}
+           	   if(segments[i].match(/1440p/ig)){lfiv[1440] = newirl+segments[i];}
+           	   if(segments[i].match(/2160p/ig)){lfiv[2160] = newirl+segments[i];}
+           	
+           	
+           };
+          var pickurl;
+          if (lfiv[2160]){pickurl = lfiv[2160];}
+         	else if(lfiv[1440]){pickurl = lfiv[1440];}
+         	else if(lfiv[1440]){pickurl = lfiv[1440];}
+         	else if(lfiv[1080]){pickurl = lfiv[1080];}
+         	else if(lfiv[720]){pickurl = lfiv[720];}
+         	else if(lfiv[640]){pickurl = lfiv[640];}
+           
+          document.querySelector('#lfjdownloadspan').setAttribute('onclick',"document.querySelector('#lfjdownloadspan').setAttribute('id','lfjdownloadspon');lfjdownload(pickurl,true,'#lfjdownloadspon')");
+ 
+        })})
+
+
 
 
 }
