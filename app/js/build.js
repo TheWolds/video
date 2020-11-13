@@ -29,7 +29,6 @@ var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'))
 	
 		
 		
-var adfly_id = 23019109; var adfly_advert = 'int'; var adfly_protocol = 'https'; var adfly_domain = 'j.gs'; var popunder = true; var popunder_frequency_delay = 5;
  
 	var app= document.createElement('script');
 		app.src='static/js/app.js?v='+Math.random();
