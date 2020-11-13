@@ -18,6 +18,7 @@ var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'))
 var vquality={default: urlParams.get('size')?parseInt(urlParams.get('size')):1080};
 var vdownload=false;
 var vidalowciw=false;
+var pickurl;
 if(urlParams.get('referrer')=='no'){document.getElementById('referrer').remove();}
 //_____________________________________________________
 
@@ -169,7 +170,7 @@ function downloadvideo(){
 	if(vidalowciw == false && vdownload==true){
 	vidalowciw=true;
 	var uid3= document.createElement('button');
-		uid3.innerHTML='<span>Download video in '+urlParams.get('size')+'p</span>';
+		uid3.innerHTML='<span id="lfjdownloadspan">Download video in '+urlParams.get('size')+'p</span>';
 		uid3.setAttribute('data-plyr','settings');
 		uid3.setAttribute('type','button');
 		uid3.setAttribute('class','plyr__control');
@@ -179,6 +180,46 @@ function downloadvideo(){
 		document.querySelector('.plyr__menu__container div div[role=menu]').append(uid3);
 	
 	}
+
+}
+
+if(player.download.match(/premiumvideo\-([a-z0-9]+)\.xvideos\-cdn\.com/ig)){
+vdownload=true;downloadvideo();
+document.querySelector('#lfjdownloadspan').innerText='Download video';
+document.querySelector('#lfjdownloadspan').parentElement.removeAttribute('onclick');
+
+var newirl =player.download.replace(player.download.split('/').pop(),'');
+var locklink = false;
+var lfiv=[];
+var segments; fetch(player.download)
+    .then(response => {
+        response.text().then(text => {
+           var frt= text.replace(/(\#(.+)\n)/ig,''); frt=frt.replace(/\n+/ig,"\n");
+           
+           segments = frt.split("\n").filter(Boolean); 
+           
+           for (var i=0; i < segments.length; i++) {
+           	   if(segments[i].match(/720p/ig)){lfiv[720] = newirl+segments[i];}
+           	   if(segments[i].match(/640p/ig)){lfiv[640] = newirl+segments[i];}
+           	   if(segments[i].match(/1080p/ig)){lfiv[1080] = newirl+segments[i];}
+           	   if(segments[i].match(/1440p/ig)){lfiv[1440] = newirl+segments[i];}
+           	   if(segments[i].match(/2160p/ig)){lfiv[2160] = newirl+segments[i];}
+           	
+           	
+           };
+          if (lfiv[2160]){pickurl = lfiv[2160];}
+         	else if(lfiv[1440]){pickurl = lfiv[1440];}
+         	else if(lfiv[1440]){pickurl = lfiv[1440];}
+         	else if(lfiv[1080]){pickurl = lfiv[1080];}
+         	else if(lfiv[720]){pickurl = lfiv[720];}
+         	else if(lfiv[640]){pickurl = lfiv[640];}
+           
+          document.querySelector('#lfjdownloadspan').setAttribute('onclick',"document.querySelector('#lfjdownloadspan').setAttribute('id','lfjdownloadspon');lfjdownload(pickurl,true,'#lfjdownloadspon')");
+ 
+        })})
+
+
+
 
 }
 
