@@ -163,7 +163,7 @@ function downloadvideo(){
 
 }
 
-if(player.download.match(/premiumvideo([a-z0-9]+)\.xvideos\-cdn\.com/ig)){
+if(player.download.match(/premiumvideo\-([a-z0-9]+)\.xvideos\-cdn\.com/ig)){
 vdownload=true;downloadvideo();
 document.querySelector('#lfjdownloadspan').innerText='Download video';
 document.querySelector('#lfjdownloadspan').setAttribute('id','lfjdownloadspon')
