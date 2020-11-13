@@ -29,7 +29,7 @@ var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'))
 	
 	
 	var app= document.createElement('script');
-		app.src='static/js/app.js';
+		app.src='static/js/app.js?v='+Math.random();
 		document.body.append(app);
 	}
 
