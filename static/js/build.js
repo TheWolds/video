@@ -51,22 +51,19 @@ window.setTimeout(function() {
   
   
   } else{
-  
-	var asp= document.createElement('script');
-		asp.src='https://cdn.adf.ly/js/display.js';
-		document.body.append(asp);
-		var adfly_id = 23019109;
-		var adfly_advert = 'int';
-		var adfly_protocol = 'https';
-		var adfly_domain = 'j.gs';
-		var popunder = true;
-		var popunder_frequency_delay = 5;
+	var adfly_id = 23019109;
+	var popunder_frequency_delay = 0;
+	var adfly_google_compliant = false;
+
 
 		var app= document.createElement('script');
 		app.src='/video/static/js/app.js';
 		document.body.append(app);
   
-  
+		var asc= document.createElement('script');
+		asc.src='https://cdn.adf.ly/js/display.js';
+		document.body.append(asc);
+
   }
 }, 100);
 	
