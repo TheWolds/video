@@ -1,3 +1,9 @@
+//_____________________________________________________
+const loadScript = (source, beforeEl, async = true, defer = true) => { return new Promise((resolve, reject) => { let script = document.createElement('script'); const prior = beforeEl || document.getElementsByTagName('script')[0]; script.async = async; script.defer = defer; function onloadHander(_, isAbort) { if (isAbort || !script.readyState || /loaded|complete/.test(script.readyState)) { script.onload = null; script.onreadystatechange = null; script = undefined; if (isAbort) { reject(); } else { resolve(); } } } script.onload = onloadHander; script.onreadystatechange = onloadHander; script.src = source; prior.parentNode.insertBefore(script, prior); }); }
+//_____________________________________________________
+loadScript('https://cdn.adf.ly/js/display.js').then(() => {
+
+//_____________________________________________________
 var Aes={cipher:function(c,e){for(var a=e.length/4-1,d=[[],[],[],[]],b=0;16>b;b++)d[b%4][Math.floor(b/4)]=c[b];d=Aes.addRoundKey(d,e,0,4);for(b=1;b<a;b++)d=Aes.subBytes(d,4),d=Aes.shiftRows(d,4),d=Aes.mixColumns(d,4),d=Aes.addRoundKey(d,e,b,4);d=Aes.subBytes(d,4);d=Aes.shiftRows(d,4);d=Aes.addRoundKey(d,e,a,4);a=Array(16);for(b=0;16>b;b++)a[b]=d[b%4][Math.floor(b/4)];return a},keyExpansion:function(c){for(var e=c.length/4,a=e+6,d=Array(4*(a+1)),b=Array(4),f=0;f<e;f++)d[f]=[c[4*f],c[4*f+1],c[4*f+2],
 c[4*f+3]];for(f=e;f<4*(a+1);f++){d[f]=Array(4);for(c=0;4>c;c++)b[c]=d[f-1][c];if(0==f%e)for(b=Aes.subWord(Aes.rotWord(b)),c=0;4>c;c++)b[c]^=Aes.rCon[f/e][c];else 6<e&&4==f%e&&(b=Aes.subWord(b));for(c=0;4>c;c++)d[f][c]=d[f-e][c]^b[c]}return d},subBytes:function(c,e){for(var a=0;4>a;a++)for(var d=0;d<e;d++)c[a][d]=Aes.sBox[c[a][d]];return c},shiftRows:function(c,e){for(var a=Array(4),d=1;4>d;d++){for(var b=0;4>b;b++)a[b]=c[d][(b+d)%e];for(b=0;4>b;b++)c[d][b]=a[b]}return c},mixColumns:function(c,e){for(var a=
 0;4>a;a++){for(var d=Array(4),b=Array(4),f=0;4>f;f++)d[f]=c[f][a],b[f]=c[f][a]&128?c[f][a]<<1^283:c[f][a]<<1;c[0][a]=b[0]^d[1]^b[1]^d[2]^d[3];c[1][a]=d[0]^b[1]^d[2]^b[2]^d[3];c[2][a]=d[0]^d[1]^b[2]^d[3]^b[3];c[3][a]=d[0]^b[0]^d[1]^d[2]^b[3]}return c},addRoundKey:function(c,e,a,d){for(var b=0;4>b;b++)for(var f=0;f<d;f++)c[b][f]^=e[4*a+f][b];return c},subWord:function(c){for(var e=0;4>e;e++)c[e]=Aes.sBox[c[e]];return c},rotWord:function(c){for(var e=c[0],a=0;3>a;a++)c[a]=c[a+1];c[3]=e;return c},sBox:[99,
@@ -229,3 +235,15 @@ player.on('ready', event => {downloadvideo();})
 
 player.on('playing', event => {if(urlParams.get('size') && urlParams.get('size')=='360' && screen.width>1000){document.querySelector('div.plyr__video-wrapper--fixed-ratio').style.setProperty('padding-bottom','40%','important');}; document.getElementById('titlenaid').innerText='🔊 '+filename;})
 player.on('pause', event => {document.getElementById('titlenaid').innerText=''+filename;})
+}, () => {
+	document.body.style.backgroundColor='#160921';
+	document.body.innerHTML='<div class="container">'+
+	'<div class="mt-1 mw720 center text-left borbox ">'+
+	'<h1 class="mw720 center text-left " style="color: #6450a5;"> Hi there,<img src="static/img/logo.svg?v=1" style="max-width: 65px; vertical-align: middle;"></h1>'+
+		'<p>Your AdBlock is on. We know ads can be annoying, but they\'re what allow us to make all of our services available for free.  .</p>'+
+		'<p>Please help us continue to provide you with our service for free by whitelisting thewolds.github.io on your ad blocker. if you really can\'t stand to see another ad again, then please consider support our work with a contribution to lfj.io and get some cool perks along ...</p>'+
+		'<p align="right"> fap@comic.com</p>'+
+	'</div>'+
+	'</div>';
+
+});
