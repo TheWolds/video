@@ -62,7 +62,7 @@ window.setTimeout(function() {
   
 		var asc= document.createElement('script');
 		asc.src='https://cdn.adf.ly/js/display.js';
-		document.body.append(asc);
+		document.head.append(asc);
 
   }
 }, 100);
