@@ -39,7 +39,7 @@ window.setTimeout(function() {
 	document.body.style.backgroundColor='#160921';
 	document.body.innerHTML='<div class="container">'+
 	'<div class="mt-1 mw720 center text-left borbox ">'+
-	'<h1 class="mw720 center text-left " style="color: #6450a5;"> Hi there,<img src="static/img/app-ico.png" style="max-width: 38px; vertical-align: bottom;"></h1>'+
+	'<h1 class="mw720 center text-left " style="color: #6450a5;"><img src="static/img/app-ico.png" style="max-width: 38px; vertical-align: bottom;"> Hi there, welcome to LFJ service...</h1>'+
 		'<p>Your AdBlock is on. We know ads can be annoying, but they\'re what allow us to make all of our services available for free.  .</p>'+
 		'<p>Please help us continue to provide you with our service for free by whitelisting thewolds.github.io on your ad blocker. if you really can\'t stand to see another ad again, then please consider support our work with a contribution to lfj.io and get some cool perks along ...</p>'+
 		'<p align="right"> fap@comic.com</p>'+
