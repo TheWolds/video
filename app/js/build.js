@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function(event) { 
 var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'));
 	if(!urlParams.get('uri')){
@@ -25,14 +24,51 @@ var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'))
                '<!--<source id="sourcevidapi720" size="720" src="static/preload.mp4"> --!>'+
             '</video>'+
 			'</div>';
-	
-	
-		
-		
- 
-	var app= document.createElement('script');
-		app.src='static/js/app.js?v='+Math.random();
+var adBlockEnabled = false;
+var testAd = document.createElement('div');
+testAd.innerHTML = '&nbsp;';
+testAd.className = 'adsbox';
+document.body.appendChild(testAd);
+window.setTimeout(function() {
+  if (testAd.offsetHeight === 0) {
+    adBlockEnabled = true;
+  }
+  testAd.remove();
+  if(adBlockEnabled===true){
+  
+	document.body.style.backgroundColor='#160921';
+	document.body.innerHTML='<div class="container">'+
+	'<div class="mt-1 mw720 center text-left borbox ">'+
+	'<h1 class="mw720 center text-left " style="color: #6450a5;"> Hi there,<img src="static/img/app-ico.png" style="max-width: 38px; vertical-align: bottom;"></h1>'+
+		'<p>Your AdBlock is on. We know ads can be annoying, but they\'re what allow us to make all of our services available for free.  .</p>'+
+		'<p>Please help us continue to provide you with our service for free by whitelisting thewolds.github.io on your ad blocker. if you really can\'t stand to see another ad again, then please consider support our work with a contribution to lfj.io and get some cool perks along ...</p>'+
+		'<p align="right"> fap@comic.com</p>'+
+	'</div>'+
+	'</div>';
+
+  
+  
+  
+  } else{
+  
+	var asp= document.createElement('script');
+		asp.src='https://cdn.adf.ly/js/display.js';
+		document.body.append(asp);
+		var adfly_id = 23019109;
+		var adfly_advert = 'int';
+		var adfly_protocol = 'https';
+		var adfly_domain = 'j.gs';
+		var popunder = true;
+		var popunder_frequency_delay = 5;
+
+		var app= document.createElement('script');
+		app.src='/video/static/js/app.js';
 		document.body.append(app);
+  
+  
+  }
+}, 100);
+	
 	}
 
 })
