@@ -1,7 +1,7 @@
 /*
 *   2.3.6
 */
-function require(script) {
+function lfjint(script) {
     $.ajax({
         url: script,
         dataType: "script",
