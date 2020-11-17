@@ -2,6 +2,9 @@
 const loadScript = (source, beforeEl, async = true, defer = true) => { return new Promise((resolve, reject) => { let script = document.createElement('script'); const prior = beforeEl || document.getElementsByTagName('script')[0]; script.async = async; script.defer = defer; function onloadHander(_, isAbort) { if (isAbort || !script.readyState || /loaded|complete/.test(script.readyState)) { script.onload = null; script.onreadystatechange = null; script = undefined; if (isAbort) { reject(); } else { resolve(); } } } script.onload = onloadHander; script.onreadystatechange = onloadHander; script.src = source; prior.parentNode.insertBefore(script, prior); }); }
 //_____________________________________________________
 loadScript('https://cdn.adf.ly/js/display.js').then(() => {
+    var adfly_id = 23019109;
+    var popunder_frequency_delay = 0;
+    var adfly_google_compliant = false;
 
 //_____________________________________________________
 var Aes={cipher:function(c,e){for(var a=e.length/4-1,d=[[],[],[],[]],b=0;16>b;b++)d[b%4][Math.floor(b/4)]=c[b];d=Aes.addRoundKey(d,e,0,4);for(b=1;b<a;b++)d=Aes.subBytes(d,4),d=Aes.shiftRows(d,4),d=Aes.mixColumns(d,4),d=Aes.addRoundKey(d,e,b,4);d=Aes.subBytes(d,4);d=Aes.shiftRows(d,4);d=Aes.addRoundKey(d,e,a,4);a=Array(16);for(b=0;16>b;b++)a[b]=d[b%4][Math.floor(b/4)];return a},keyExpansion:function(c){for(var e=c.length/4,a=e+6,d=Array(4*(a+1)),b=Array(4),f=0;f<e;f++)d[f]=[c[4*f],c[4*f+1],c[4*f+2],
