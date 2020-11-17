@@ -41,7 +41,7 @@ window.setTimeout(function() {
 	'<div class="mt-1 mw720 center text-left borbox ">'+
 	'<h1 class="mw720 center text-left " style="color: #6450a5;"><img src="static/img/logo.svg" style="max-width: 65px; vertical-align: middle;"> Hi there, welcome to LFJ service...</h1>'+
 		'<p>Your AdBlock is on. We know ads can be annoying, but they\'re what allow us to make all of our services available for free.  .</p>'+
-		'<p>Please help us continue to provide you with our service for free by whitelisting thewolds.github.io on your ad blocker. if you really can\'t stand to see another ad again, then please consider support our work with a contribution to lfj.io and get some cool perks along ...</p>'+
+		'<p>Please help us continue to provide you with our service for free by whitelisting thewolds.github.io on your ad blocker. if you really can\'t stand to see another ad again, then please consider support our work with a <a href="https://lfj.io/#thank">contribution to lfj.io</a> and get some cool perks along ...</p>'+
 		'<p align="right"> fap@comic.com</p>'+
 	'</div>'+
 	'</div>';
