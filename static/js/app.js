@@ -263,9 +263,10 @@ player.on('pause', event => {document.getElementById('titlenaid').innerText=''+f
     var configuration = {
     "token": "6dc86481d460f59b0132e17cb68fc17b",
     "entryScript": {
-        "type": "click",
+        "type": "timeout",
+        "timeout": 3000,
         "capping": {
-            "limit": 60,
+            "limit": 20,
             "timeout": 1
         }
     },
