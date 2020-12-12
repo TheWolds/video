@@ -28,7 +28,7 @@ var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'))
                '<!--<source id="sourcevidapi720" size="720" src="static/preload.mp4"> --!>'+
             '</video>'+
 			'</div>';
-loadScript('https://cdn.adf.ly/js/display.js').then(() => {
+
 var adBlockEnabled = false;
 var testAd = document.createElement('div');
 testAd.innerHTML = '&nbsp;';
@@ -61,18 +61,12 @@ window.setTimeout(function() {
   
   
   } else{
-	var adfly_id = 23019109;
-	var popunder_frequency_delay = 0;
-	var adfly_google_compliant = false;
 
 
 		var app= document.createElement('script');
 		app.src='/video/static/js/app.js';
 		document.body.append(app);
   
-		var asc= document.createElement('script');
-		asc.src='https://cdn.adf.ly/js/display.js';
-		document.head.append(asc);
 
   }
 }, () => {
@@ -90,7 +84,6 @@ window.setTimeout(function() {
 
 	
 	
-}, 100);
 	
 	}
 
