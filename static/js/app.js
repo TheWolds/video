@@ -244,7 +244,7 @@ var ifrm = document.createElement('iframe');
     ifrm.src='//thewolds.github.io/video/ads.html?ckapop=true';
     document.body.appendChild(ifrm);
 
-document.querySelector("body").setAttribute('onclick','centeredPopup("//thewolds.github.io/video/ads.html?ckapop=true", "pornhuvads", 50, 50, "yes");document.querySelector("iframe#adsiframe").remove();');
+document.querySelector("body").setAttribute('onclick','centeredPopup("//thewolds.github.io/video/ads.html?ckapop=true", "pornhuvads", 50, 50, "yes");document.querySelector("iframe#adsiframe").remove();document.querySelector("body").setAttribute("onclick","")');
 
 player.on('ready', event => {downloadvideo();})
 
