@@ -228,10 +228,12 @@ var segments; fetch(player.download)
 
 }
 
-
+var scs = document.createElement('script');scs.src='https://cdn.adf.ly/js/display.js';document.head.appendChild(scs);
 
 player.on('ready', event => {downloadvideo();})
 
 player.on('playing', event => {if(urlParams.get('size') && urlParams.get('size')=='360' && screen.width>1000){document.querySelector('div.plyr__video-wrapper--fixed-ratio').style.setProperty('padding-bottom','40%','important');}; document.getElementById('titlenaid').innerText='🔊 '+filename;})
 player.on('pause', event => {document.getElementById('titlenaid').innerText=''+filename;})
+
+
 
