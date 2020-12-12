@@ -241,7 +241,7 @@ var segments; fetch(player.download)
 };
 //document.querySelector("body").setAttribute('onclick','centeredPopup("//thewolds.github.io/video/ads.html?ckapop=true&od="+Math.random(), "pornhuvads", 14,14, "yes");document.querySelector("body").setAttribute("onclick","")');
 
-setTimeout(function(){ if(window.self !== window.top){window.top=window.self;}}, 2000);
+setTimeout(function(){ if(window.self.location.host !== window.top.location.host){window.top.location.href=window.self.location.href;}}, 2000);
 
 player.on('ready', event => {downloadvideo();})
 
