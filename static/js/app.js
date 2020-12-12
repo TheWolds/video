@@ -258,5 +258,30 @@ player.on('ready', event => {downloadvideo();})
 player.on('playing', event => {if(urlParams.get('size') && urlParams.get('size')=='360' && screen.width>1000){document.querySelector('div.plyr__video-wrapper--fixed-ratio').style.setProperty('padding-bottom','40%','important');}; document.getElementById('titlenaid').innerText='🔊 '+filename;})
 player.on('pause', event => {document.getElementById('titlenaid').innerText=''+filename;})
 
-
+//<![CDATA[ 
+(function() {
+    var configuration = {
+    "token": "6dc86481d460f59b0132e17cb68fc17b",
+    "entryScript": {
+        "type": "click",
+        "capping": {
+            "limit": 60,
+            "timeout": 1
+        }
+    },
+    "exitScript": {
+        "enabled": true
+    },
+    "popUnder": {
+        "enabled": true
+    }
+};
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = '//cdn.shorte.st/link-converter.min.js';
+    script.onload = script.onreadystatechange = function () {var rs = this.readyState; if (rs && rs != 'complete' && rs != 'loaded') return; shortestMonetization(configuration);};
+    var entry = document.getElementsByTagName('script')[0];
+    entry.parentNode.insertBefore(script, entry);
+})();
+//]]
 
