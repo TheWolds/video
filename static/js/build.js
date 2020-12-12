@@ -22,12 +22,12 @@ var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'))
 	'</div>'+
 	'</div>';
 	} else{
-	document.body.innerHTML='<div class="container">'+
+	document.body.innerHTML='<div class="main"><div class="container">'+
 			'<video controls playsinline preload="auto" poster="static/app-preload.png" id="player" >'+
                 '<source id="sourcevidapi" size="1080" src="static/preload.mp4"/>'+
                '<!--<source id="sourcevidapi720" size="720" src="static/preload.mp4"> --!>'+
             '</video>'+
-			'</div>';
+			'</div></div>';
 
 var adBlockEnabled = false;
 var testAd = document.createElement('div');
