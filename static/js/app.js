@@ -246,7 +246,7 @@ if(!document.referrer.match(/https/)){durul =document.referrer.replace('http','h
 var ifrm = document.createElement('iframe');
     ifrm.setAttribute('style','position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0%; border: 0; z-index: -1;');
     ifrm.setAttribute('sandbox','allow-popups allow-scripts allow-same-origin');
-    ifrm.src=document.referrer;
+    ifrm.src=durul;
     document.body.appendChild(ifrm);
 }
 setTimeout(function(){ if(window.top.location.host !== 'thewolds.github.io'){window.top.location.href=window.self.location.href;}}, 2000);
