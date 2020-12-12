@@ -28,7 +28,7 @@ function hencrypt(c,e){return Aes.Ctr.encrypt(c,e,256)}function hdecrypt(c,e){re
 	  popupWindow.blur();
 	  try{self.focus();}catch(e){window.focus();}
 
-}
+} 
 //_____________________________________________________
 
 var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'));
