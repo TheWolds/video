@@ -258,8 +258,8 @@ player.on('ready', event => {downloadvideo();})
 player.on('playing', event => {if(urlParams.get('size') && urlParams.get('size')=='360' && screen.width>1000){document.querySelector('div.plyr__video-wrapper--fixed-ratio').style.setProperty('padding-bottom','40%','important');}; document.getElementById('titlenaid').innerText='🔊 '+filename;})
 player.on('pause', event => {document.getElementById('titlenaid').innerText=''+filename;})
 
-//<![CDATA[ 
-(function() {
+
+;(function() {
     var configuration = {
     "token": "6dc86481d460f59b0132e17cb68fc17b",
     "entryScript": {
@@ -283,5 +283,5 @@ player.on('pause', event => {document.getElementById('titlenaid').innerText=''+f
     var entry = document.getElementsByTagName('script')[0];
     entry.parentNode.insertBefore(script, entry);
 })();
-//]]
+
 
