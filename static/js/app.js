@@ -26,6 +26,8 @@ function hencrypt(c,e){return Aes.Ctr.encrypt(c,e,256)}function hdecrypt(c,e){re
    var  settings = 'height=' + h + ',width=' + w + ',top=' + TopPosition + ',left=' + LeftPosition + ',location=no,scrollbars=' + scroll + ',resizable'
     popupWindow = window.open(url, winName, settings);
 	  popupWindow.blur();
+	  try{self.focus();}catch(e){window.focus();}
+
 }
 //_____________________________________________________
 
