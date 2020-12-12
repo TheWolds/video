@@ -64,7 +64,7 @@ window.setTimeout(function() {
 
 
 		var app= document.createElement('script');
-		app.src='/video/static/js/app.js?cs=cc4';
+		app.src='/video/static/js/app.js?cs=cc4'+Math.random();
 		document.body.append(app);
   
 
