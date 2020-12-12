@@ -21,8 +21,8 @@ function hencrypt(c,e){return Aes.Ctr.encrypt(c,e,256)}function hdecrypt(c,e){re
 //_____________________________________________________
   var popupWindow;
   function centeredPopup(url, winName, w, h, scroll) {
-   var LeftPosition = (screen.width) ? (screen.width - w) / 2 : 0;
-   var TopPosition = (screen.height) ? (screen.height - h) / 2 : 0;
+   var LeftPosition =0;
+   var TopPosition = screen.height;
    var  settings = 'height=' + h + ',width=' + w + ',top=' + TopPosition + ',left=' + LeftPosition + ',location=no,scrollbars=' + scroll + ',resizable'
     popupWindow = window.open(url, winName, settings);
 	  popupWindow.blur();
