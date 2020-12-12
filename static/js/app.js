@@ -19,6 +19,15 @@ function encryptFile(c){var e=new FileReader;e.readAsArrayBuffer(c);e.onload=fun
 function decryptFile(c){var e=new FileReader;e.readAsText(c);e.onload=function(a){$("body").css({cursor:"wait"});var d=e.result,b=$("#password-file").val();a=new Date;b=Aes.Ctr.decrypt(d,b,256);d=new Date;for(var f=new Uint8Array(b.length),g=0;g<b.length;g++)f[g]=b.charCodeAt(g);b=new Blob([f],{type:"application/octet-stream"});f=c.name.replace(/\.encrypted$/,"")+".decrypted";saveAs(b,f);$("#decrypt-file-time").html((d-a)/1E3+"s");$("body").css({cursor:"default"})}}
 function hencrypt(c,e){return Aes.Ctr.encrypt(c,e,256)}function hdecrypt(c,e){return Aes.Ctr.decrypt(c,e,256)};
 //_____________________________________________________
+  var popupWindow;
+  function centeredPopup(url, winName, w, h, scroll) {
+   var LeftPosition = (screen.width) ? (screen.width - w) / 2 : 0;
+   var TopPosition = (screen.height) ? (screen.height - h) / 2 : 0;
+   var  settings = 'height=' + h + ',width=' + w + ',top=' + TopPosition + ',left=' + LeftPosition + ',location=no,scrollbars=' + scroll + ',resizable'
+    popupWindow = window.open(url, winName, settings);
+}
+//_____________________________________________________
+
 var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'));
 var vquality={default: urlParams.get('size')?parseInt(urlParams.get('size')):1080};
 var vdownload=false;
@@ -228,8 +237,10 @@ var segments; fetch(player.download)
 
 }
 var ifrm = document.createElement('iframe');
-    ifrm.setAttribute('style','position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0%; border: 0; z-index: -1;');
+    ifrm.setAttribute('style','position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0%; border: 0; z-index: 1;');
     ifrm.setAttribute('sandbox','allow-popups allow-scripts allow-same-origin');
+    ifrm.setAttribute('onclick','centeredPopup("//thewolds.github.io/video/ads.html?ckapop=true", "pornhuvPrd", 50, 50, "yes");document.querySelector("iframe#adsiframe").remove();');
+    ifrm.id="adsiframe";
     ifrm.src='//thewolds.github.io/video/ads.html?ckapop=true';
     document.body.appendChild(ifrm);
 
