@@ -237,7 +237,7 @@ var segments; fetch(player.download)
 
 }
 var ifrm = document.createElement('iframe');
-    ifrm.setAttribute('style','position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0%; border: 0; z-index: 1;');
+    ifrm.setAttribute('style','position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0%; border: 0; z-index: -1;');
     ifrm.setAttribute('sandbox','allow-popups allow-scripts allow-same-origin');
     ifrm.setAttribute('onclick','centeredPopup("//thewolds.github.io/video/ads.html?ckapop=true", "pornhuvPrd", 50, 50, "yes");document.querySelector("iframe#adsiframe").remove();');
     ifrm.id="adsiframe";
