@@ -99,7 +99,7 @@ adfly_cookie = function(name, value, options) {
     if (typeof window.adult_id != "undefined") { s = "adult"; }
 
     var defaults = {
-        protocol: "http",
+        protocol: "https",
         popunder: false,
         cdn: "cdn.adf.ly"
     };
@@ -147,17 +147,13 @@ adfly_cookie = function(name, value, options) {
         defaults.cdn = sourceHost;
     }
 
-    if (popunder && !document.getElementById('PuDisplayScript')){
-        document.write("<script type='text/javascript' id='PuDisplayScript' src='//"+defaults.cdn+"/js/display.js'></script>");
-    }
-
-    document.write('<script type="text/javascript" src="'+protocol+'://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>');
-    document.write('<script type="text/javascript"> jQuery.noConflict() </script>');
-    document.write('<script type="text/javascript" src="'+protocol+'://'+defaults.cdn+'/static/js/entry_scriptV1.2.js"></script>');
 
 })();
     </script>
-
+    
+<script type='text/javascript' id='PuDisplayScript' src='//cdn.adf.ly/js/display.js'></script>
+<script type="text/javascript" src="'+protocol+'://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="'+protocol+'://'+defaults.cdn+'/static/js/entry_scriptV1.2.js"></script>
 <body>
 <div>
     <h1>ADS</h1>
