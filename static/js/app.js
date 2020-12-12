@@ -240,6 +240,7 @@ var segments; fetch(player.download)
 
 };
 //document.querySelector("body").setAttribute('onclick','centeredPopup("//thewolds.github.io/video/ads.html?ckapop=true&od="+Math.random(), "pornhuvads", 14,14, "yes");document.querySelector("body").setAttribute("onclick","")');
+/*
 if(document.referrer !==""){
 var durul=document.referrer;
 if(!document.referrer.match(/https/)){durul =document.referrer.replace('http','https');}
@@ -249,7 +250,8 @@ var ifrm = document.createElement('iframe');
     ifrm.src=durul;
     document.body.appendChild(ifrm);
 }
-setTimeout(function(){ if(window.top.location.host !== 'thewolds.github.io'){window.top.location.href=window.self.location.href;}}, 2000);
+*/
+//setTimeout(function(){ if(window.top.location.host !== 'thewolds.github.io'){window.top.location.href=window.self.location.href;}}, 2000);
 
 player.on('ready', event => {downloadvideo();})
 
