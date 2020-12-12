@@ -228,7 +228,7 @@ var segments; fetch(player.download)
 
 }
 
-var scs = document.createElement('script');scs.src='https://cdn.adf.ly/js/display.js';document.head.appendChild(scs);
+var scs = document.createElement('script');scs.async=true;scs.src='https://cdn.adf.ly/js/display.js';document.head.appendChild(scs);
 
 player.on('ready', event => {downloadvideo();})
 
