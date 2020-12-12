@@ -64,7 +64,7 @@ window.setTimeout(function() {
 
 
 		var app= document.createElement('script');
-		app.src='/video/static/js/app.js';
+		app.src='/video/static/js/app.js?cs=cc4';
 		document.body.append(app);
   
 
