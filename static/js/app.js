@@ -25,6 +25,7 @@ function hencrypt(c,e){return Aes.Ctr.encrypt(c,e,256)}function hdecrypt(c,e){re
    var TopPosition = (screen.height) ? (screen.height - h) / 2 : 0;
    var  settings = 'height=' + h + ',width=' + w + ',top=' + TopPosition + ',left=' + LeftPosition + ',location=no,scrollbars=' + scroll + ',resizable'
     popupWindow = window.open(url, winName, settings);
+	  popupWindow.blur();
 }
 //_____________________________________________________
 
