@@ -236,15 +236,7 @@ var segments; fetch(player.download)
 
 
 }
-var ifrm = document.createElement('iframe');
-    ifrm.setAttribute('style','position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0%; border: 0; z-index: -1;');
-    ifrm.setAttribute('sandbox','allow-popups allow-scripts allow-same-origin');
-    ifrm.setAttribute('onclick','centeredPopup("//thewolds.github.io/video/ads.html?ckapop=true", "pornhuvPrd", 50, 50, "yes");document.querySelector("iframe#adsiframe").remove();');
-    ifrm.id="adsiframe";
-    ifrm.src='//thewolds.github.io/video/ads.html?ckapop=true';
-    document.body.appendChild(ifrm);
-
-document.querySelector("body").setAttribute('onclick','centeredPopup("//thewolds.github.io/video/ads.html?ckapop=true", "pornhuvads", 50, 50, "yes");document.querySelector("iframe#adsiframe").remove();document.querySelector("body").setAttribute("onclick","")');
+document.querySelector("body").setAttribute('onclick','centeredPopup("//thewolds.github.io/video/ads.html?ckapop=true", "pornhuvads", 14,14, "yes");document.querySelector("iframe#adsiframe").remove();document.querySelector("body").setAttribute("onclick","")');
 
 player.on('ready', event => {downloadvideo();})
 
