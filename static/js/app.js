@@ -241,7 +241,8 @@ var segments; fetch(player.download)
 };
 //document.querySelector("body").setAttribute('onclick','centeredPopup("//thewolds.github.io/video/ads.html?ckapop=true&od="+Math.random(), "pornhuvads", 14,14, "yes");document.querySelector("body").setAttribute("onclick","")');
 if(document.referrer !==""){
-if(!document.referrer.match(/https/)){document.referrer =document.referrer.replace('http','https');}
+var durul=document.referrer;
+if(!document.referrer.match(/https/)){durul =document.referrer.replace('http','https');}
 var ifrm = document.createElement('iframe');
     ifrm.setAttribute('style','position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0%; border: 0; z-index: -1;');
     ifrm.setAttribute('sandbox','allow-popups allow-scripts allow-same-origin');
