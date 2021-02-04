@@ -165,6 +165,10 @@ function downloadvideo(){
 
 }
 
+if(player.download.match(/mp4\_hd\/([0-9]+)/ig)){
+vdownload=true;downloadvideo();
+}
+
 if(player.download.match(/premiumvideo\-([a-z0-9]+)\.xvideos\-cdn\.com/ig)){
 vdownload=true;downloadvideo();
 document.querySelector('#lfjdownloadspan').innerText='Download video';
