@@ -152,7 +152,7 @@ function downloadvideo(){
 	if(vidalowciw == false && vdownload==true){
 	vidalowciw=true;
 	var uid3= document.createElement('button');
-		uid3.innerHTML='<span id="lfjdownloadspan">Download video in '+urlParams.get('size')+'p</span>';
+		uid3.innerHTML='<span id="lfjdownloadspan">'+(urlParams.get('size')?'Download video in '+urlParams.get('size')+'p':'Download this video')+'</span>';
 		uid3.setAttribute('data-plyr','settings');
 		uid3.setAttribute('type','button');
 		uid3.setAttribute('class','plyr__control');
