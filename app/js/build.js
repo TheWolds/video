@@ -52,7 +52,7 @@ window.setTimeout(function() {
   } else{
 
 		var app= document.createElement('script');
-		app.src='/video/static/js/app.js';
+		app.src='/video/app/js/app.js';
 		document.body.append(app);
   
   
