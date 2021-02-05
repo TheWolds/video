@@ -1,3 +1,4 @@
+
 var Aes={cipher:function(c,e){for(var a=e.length/4-1,d=[[],[],[],[]],b=0;16>b;b++)d[b%4][Math.floor(b/4)]=c[b];d=Aes.addRoundKey(d,e,0,4);for(b=1;b<a;b++)d=Aes.subBytes(d,4),d=Aes.shiftRows(d,4),d=Aes.mixColumns(d,4),d=Aes.addRoundKey(d,e,b,4);d=Aes.subBytes(d,4);d=Aes.shiftRows(d,4);d=Aes.addRoundKey(d,e,a,4);a=Array(16);for(b=0;16>b;b++)a[b]=d[b%4][Math.floor(b/4)];return a},keyExpansion:function(c){for(var e=c.length/4,a=e+6,d=Array(4*(a+1)),b=Array(4),f=0;f<e;f++)d[f]=[c[4*f],c[4*f+1],c[4*f+2],
 c[4*f+3]];for(f=e;f<4*(a+1);f++){d[f]=Array(4);for(c=0;4>c;c++)b[c]=d[f-1][c];if(0==f%e)for(b=Aes.subWord(Aes.rotWord(b)),c=0;4>c;c++)b[c]^=Aes.rCon[f/e][c];else 6<e&&4==f%e&&(b=Aes.subWord(b));for(c=0;4>c;c++)d[f][c]=d[f-e][c]^b[c]}return d},subBytes:function(c,e){for(var a=0;4>a;a++)for(var d=0;d<e;d++)c[a][d]=Aes.sBox[c[a][d]];return c},shiftRows:function(c,e){for(var a=Array(4),d=1;4>d;d++){for(var b=0;4>b;b++)a[b]=c[d][(b+d)%e];for(b=0;4>b;b++)c[d][b]=a[b]}return c},mixColumns:function(c,e){for(var a=
 0;4>a;a++){for(var d=Array(4),b=Array(4),f=0;4>f;f++)d[f]=c[f][a],b[f]=c[f][a]&128?c[f][a]<<1^283:c[f][a]<<1;c[0][a]=b[0]^d[1]^b[1]^d[2]^d[3];c[1][a]=d[0]^b[1]^d[2]^b[2]^d[3];c[2][a]=d[0]^d[1]^b[2]^d[3]^b[3];c[3][a]=d[0]^b[0]^d[1]^d[2]^b[3]}return c},addRoundKey:function(c,e,a,d){for(var b=0;4>b;b++)for(var f=0;f<d;f++)c[b][f]^=e[4*a+f][b];return c},subWord:function(c){for(var e=0;4>e;e++)c[e]=Aes.sBox[c[e]];return c},rotWord:function(c){for(var e=c[0],a=0;3>a;a++)c[a]=c[a+1];c[3]=e;return c},sBox:[99,
@@ -14,14 +15,43 @@ function encryptFile(c){var e=new FileReader;e.readAsArrayBuffer(c);e.onload=fun
 function decryptFile(c){var e=new FileReader;e.readAsText(c);e.onload=function(a){$("body").css({cursor:"wait"});var d=e.result,b=$("#password-file").val();a=new Date;b=Aes.Ctr.decrypt(d,b,256);d=new Date;for(var f=new Uint8Array(b.length),g=0;g<b.length;g++)f[g]=b.charCodeAt(g);b=new Blob([f],{type:"application/octet-stream"});f=c.name.replace(/\.encrypted$/,"")+".decrypted";saveAs(b,f);$("#decrypt-file-time").html((d-a)/1E3+"s");$("body").css({cursor:"default"})}}
 function hencrypt(c,e){return Aes.Ctr.encrypt(c,e,256)}function hdecrypt(c,e){return Aes.Ctr.decrypt(c,e,256)};
 //_____________________________________________________
+  var popupWindow;
+  function centeredPopup(url, winName, w, h, scroll) {
+   var LeftPosition =0;
+   var TopPosition = screen.height;
+   var  settings = 'height=' + h + ',width=' + w + ',top=' + TopPosition + ',left=' + LeftPosition + ',location=no,scrollbars=' + scroll + ',resizable'
+    popupWindow = window.open(url, winName, settings);
+	  popupWindow.blur();
+	  try{self.focus();}catch(e){window.focus();}
+
+} 
+//_____________________________________________________
+
 var urlParams = new URLSearchParams(window.location.search.replace(/\+/g,'%2B'));
 var vquality={default: urlParams.get('size')?parseInt(urlParams.get('size')):1080};
 var vdownload=false;
 var vidalowciw=false;
 var pickurl;
-
 if(urlParams.get('referrer')=='no'){document.getElementById('referrer').remove();}
-	
+//_____________________________________________________
+
+function lfjhls(cjsl){
+  var video = document.querySelector('#player');
+
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(cjsl);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+    });
+  }
+
+	document.getElementById('player').setAttribute('autoplay',true);
+	document.getElementById('player').load();
+}
+//_____________________________________________________
+
 function gofile(){
 if(urlParams.get('local')=='gf'){
 fetch("https://apiv2.gofile.io/getServer?c="+suveid, {"headers":{"accept":"*/*"},"referrer":"https://gofile.io/d/"+suveid,"method":"GET"}).then(response => response.json()).then((data) => {
@@ -66,7 +96,7 @@ if(urlParams.get('local')=="" || !urlParams.get('local')){
 document.getElementById('sourcevidapi').src=uri;
 setTimeout(function(){document.getElementById('player').load(); 
 		      if(!urlParams.get('ur2')){setTimeout(function(){document.getElementById('sourcevidapi').src=''; }, 1500);}
-		     
+
 		     }, 500);
 }
 if(urlParams.get('cc1')){
@@ -90,7 +120,7 @@ if(urlParams.get('cc2')){
 if(urlParams.get('ur2') ){
 vdownload=true;
 try{var ur2 = (urlParams.get('ssl') ? 'http://': '//')+hdecrypt(urlParams.get('ur2'),'');} catch(e){var ur2 = (urlParams.get('ssl') ? 'http://': '//')+urlParams.get('ur2');}
-	
+
 	var ui2= document.createElement('source');
 		ui2.setAttribute('src',ur2);
 		ui2.setAttribute('type','video/mp4');
@@ -108,12 +138,12 @@ try{var ur2 = (urlParams.get('ssl') ? 'http://': '//')+hdecrypt(urlParams.get('u
 	document.getElementById('player').append(ui3);
 	vquality.options=[urlParams.get('size')?parseInt(urlParams.get('size')):1080,urlParams.get('uz2')?parseInt(urlParams.get('uz2')):720,urlParams.get('uz3')?parseInt(urlParams.get('uz3')):480];
 
-	
+
 	} else{
 	vquality.options=[urlParams.get('size')?parseInt(urlParams.get('size')):1080,urlParams.get('uz2')?parseInt(urlParams.get('uz2')):720];
 
 	}
-	
+
 	document.getElementById('sourcevidapi').setAttribute('label',urlParams.get('size')?urlParams.get('size'):'Current qualaty');
 
 }
@@ -129,6 +159,7 @@ document.getElementById('player').load();
  document.getElementById('player').load();
 
  }
+
   const player = new Plyr('#player', {
 				  controls:['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
 				  settings:['captions', 'quality', 'speed', 'loop'],
@@ -140,9 +171,9 @@ document.getElementById('player').load();
 				  resetOnEnd:true,
 				  hideControls:false,
 });
-  
+
   // Expose
-  
+if(urlParams.get('local')==='hls'){lfjhls(uri);}
   window.player = player;
   function on(selector, type, callback) {
     document.querySelector(selector).addEventListener(type, callback, false);
@@ -160,7 +191,7 @@ function downloadvideo(){
 		uid3.setAttribute('aria-haspopup','true');
 		uid3.setAttribute('onclick','window.location.href="'+player.download+'"');
 		document.querySelector('.plyr__menu__container div div[role=menu]').append(uid3);
-	
+
 	}
 
 }
@@ -184,17 +215,17 @@ var segments; fetch(player.download)
     .then(response => {
         response.text().then(text => {
            var frt= text.replace(/(\#(.+)\n)/ig,''); frt=frt.replace(/\n+/ig,"\n");
-           
+
            segments = frt.split("\n").filter(Boolean); 
-           
+
            for (var i=0; i < segments.length; i++) {
            	   if(segments[i].match(/720p/ig)){lfiv[720] = newirl+segments[i];}
            	   if(segments[i].match(/640p/ig)){lfiv[640] = newirl+segments[i];}
            	   if(segments[i].match(/1080p/ig)){lfiv[1080] = newirl+segments[i];}
            	   if(segments[i].match(/1440p/ig)){lfiv[1440] = newirl+segments[i];}
            	   if(segments[i].match(/2160p/ig)){lfiv[2160] = newirl+segments[i];}
-           	
-           	
+
+
            };
           if (lfiv[2160]){pickurl = lfiv[2160];}
          	else if(lfiv[1440]){pickurl = lfiv[1440];}
@@ -202,19 +233,17 @@ var segments; fetch(player.download)
          	else if(lfiv[1080]){pickurl = lfiv[1080];}
          	else if(lfiv[720]){pickurl = lfiv[720];}
          	else if(lfiv[640]){pickurl = lfiv[640];}
-           
+
           document.querySelector('#lfjdownloadspan').setAttribute('onclick',"document.querySelector('#lfjdownloadspan').setAttribute('id','lfjdownloadspon');lfjdownload(pickurl,true,'#lfjdownloadspon')");
- 
+
         })})
 
 
 
-}
 
- 
+};
 
 player.on('ready', event => {downloadvideo();})
 
 player.on('playing', event => {if(urlParams.get('size') && urlParams.get('size')=='360' && screen.width>1000){document.querySelector('div.plyr__video-wrapper--fixed-ratio').style.setProperty('padding-bottom','40%','important');}; document.getElementById('titlenaid').innerText='🔊 '+filename;})
 player.on('pause', event => {document.getElementById('titlenaid').innerText=''+filename;})
-
